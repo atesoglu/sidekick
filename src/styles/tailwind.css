@@ -1,0 +1,20 @@
+/*
+ * Tailwind CSS — layout/composition utilities only. See README.md
+ * ("Carbon + Tailwind: division of responsibilities") for the full policy.
+ *
+ * Preflight is intentionally OMITTED: Carbon already ships its own reset and
+ * base typography (src/styles/global.scss), and Preflight's unstyled
+ * headings/lists/buttons would fight that. Everything below therefore stays
+ * in Tailwind's `theme`/`utilities` cascade layers, never `base`.
+ *
+ * Layered vs. unlayered CSS also gives us a structural guarantee, not just a
+ * convention: Carbon's compiled CSS is unlayered, and per the CSS cascade
+ * layers spec, unlayered rules always beat layered ones on a shared
+ * property, regardless of specificity or import order. So a Tailwind utility
+ * can never silently override a style Carbon already sets on its own
+ * components (e.g. `.cds--btn` colors) — it only "wins" for properties
+ * Carbon doesn't touch, which is exactly the intended layout/utility role.
+ */
+@layer theme, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);

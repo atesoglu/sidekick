@@ -1,0 +1,22 @@
+// Carbon's full component + type + grid styles. Fine as a starting point;
+// consider switching to selective imports (see @carbon/react docs) once the
+// set of components actually used stabilizes and bundle size matters.
+//
+// `$css--font-face: false` skips bundling the IBM Plex @font-face
+// declarations: Carbon's default font path uses a webpack-style `~` alias
+// that Vite can't resolve, and the full IBM Plex family is ~170MB. Type
+// falls back to the next font in Carbon's stack (system-ui). Re-enable and
+// self-host the fonts under `public/` if exact Plex typography is needed.
+@use "@carbon/react" with (
+  $css--font-face: false
+);
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
